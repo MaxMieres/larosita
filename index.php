@@ -100,16 +100,19 @@
             </form>
 
             <!-- Mostrar el resultado si existe -->
-            <?php if (isset($_GET['result'])): ?>
-                <?php 
-                    $result = htmlspecialchars($_GET['result']);
-                    $partes = explode("|", $result); 
-                ?>
+            <?php
+            if (isset($_GET['result'])) {
+                $result = htmlspecialchars($_GET['result']);
+                $partes = explode("|", $result); 
+
+                echo <<<HTML
                 <div class="result">
-                    <?= $partes[0] ?><br>
-                    <span class="precio">$<?= $partes[1] ?></span>
+                    {$partes[0]}<br>
+                    <span class="precio">\${$partes[1]}</span>
                 </div>
-            <?php endif; ?>
+                HTML;
+            }
+            ?>
         </div>
 
         <div class="button-container">
@@ -118,5 +121,7 @@
         </div>
     </div>
 </body>
+
 </html>
+
 
