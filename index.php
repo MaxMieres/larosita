@@ -100,17 +100,16 @@
             </form>
 
             <!-- Mostrar el resultado si existe -->
-            <?php
-            if (isset($_GET['result'])) {
-                $result = htmlspecialchars($_GET['result']);
-                $partes = explode("|", $result); 
-                
-                echo '<div class="result">';
-                echo $partes[0] . '<br>'; 
-                echo '<span class="precio">$' . $partes[1] . '</span>'; 
-                echo '</div>';
-            }
-            ?>
+            <?php if (isset($_GET['result'])): ?>
+                <?php 
+                    $result = htmlspecialchars($_GET['result']);
+                    $partes = explode("|", $result); 
+                ?>
+                <div class="result">
+                    <?= $partes[0] ?><br>
+                    <span class="precio">$<?= $partes[1] ?></span>
+                </div>
+            <?php endif; ?>
         </div>
 
         <div class="button-container">
@@ -120,3 +119,4 @@
     </div>
 </body>
 </html>
+
